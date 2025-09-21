@@ -25,6 +25,9 @@ rule MAL_WIN_Qakbot_Keylogger_PE
         $s12 = "GetModuleFileNameA" 
         $s13 = "GetFileAttributesExW"          
         $s14 = "v@TrackMouseEvent" 
+        $s15 = "DispatchMessageW"
+        $s16 = "TranslateMessage"
+        $s17 = "GetSystemMetrics"
         
         $s_misc_1 = "Terminate_Server"
         $s_misc_2 = "Failed to install clipboard viewer"
@@ -47,7 +50,7 @@ rule MAL_WIN_Qakbot_Keylogger_PE
         filesize < 850KB and
 		(pe.imports("KERNEL32.dll", "GlobalAlloc") or pe.imports("KERNEL32.dll", "Sleep")) and
         pe.exports("Updt") and
-        10 of ($s*) and
+        14 of ($s*) and
         8 of ($s_misc_*) and
         any of ($s_utf_1)
 
